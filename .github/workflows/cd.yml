@@ -1,8 +1,10 @@
-name: Build and Push Docker Image
+name: Build and Push Docker Image (deploy on success)
 
 on:
-  push:
-    branches: [ main ]
+  workflow_run:
+    workflows: [ "Java CI" ]
+    types:
+      - completed
 
 jobs:
   build-and-push:
